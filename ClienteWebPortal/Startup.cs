@@ -1,4 +1,5 @@
 using ClienteWebPortal.Models;
+using DataBase.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,7 +28,10 @@ namespace ClienteWebPortal
         {
             services.AddControllersWithViews();
              
-            services.AddDbContextPool<FuncionarioDBContext>(options => options.UseSqlServer("Server=(local);Database=FuncionarioDB;Trusted_Connection=True"));
+            services.AddDbContext<FuncionarioDBContext>(options => options.UseSqlServer("Server=(local);Database=FuncionarioDB;Trusted_Connection=True"));
+
+            services.AddDbContext<LICITANTEContext>(options => options.UseSqlServer("Server=(local);Database=LICITANTE;Trusted_Connection=True"));
+            services.AddDbContext<CERTIFICAContext>(options => options.UseSqlServer("Server=(local);Database=CERTIFICA;Trusted_Connection=True"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

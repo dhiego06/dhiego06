@@ -15,4 +15,16 @@ namespace ClienteWebPortal.Models
         public decimal Salario { get; set; }
         public DateTime DataIngresso { get; set; }
     }
+
+    public partial class NovoFuncionario: Funcionario
+    {
+        public int IdTipoLicitacao { get; set; }
+        public List<TipoLicitacao> TipoLicitacao { get; set; }
+
+        public int US_ID { get; set; }
+
+        public List<DataBase.Data.Usuario> Funcionarios { get; set; }
+
+    }
+
 }

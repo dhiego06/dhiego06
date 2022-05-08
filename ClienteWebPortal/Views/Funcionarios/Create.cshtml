@@ -1,4 +1,4 @@
-﻿@model ClienteWebPortal.Models.Funcionario
+﻿@model ClienteWebPortal.Models.NovoFuncionario
 
 @{
     ViewData["Title"] = "Create";
@@ -40,6 +40,23 @@
                 <input type="submit" value="Gravar" class="btn btn-primary" />
             </div>
         </form>
+    </div>
+
+    <div class="col-md-4">
+        <label asp-for="IdTipoLicitacao" class="control-label">Tipo Licita</label>
+        <select id="drpEmpList" class="form-control" asp-for="IdTipoLicitacao" asp-items="@(new SelectList(Model.TipoLicitacao, "IdTipoLicitacao", "Descricao"))">
+            <option value="">--Select--</option>
+        </select>
+        <input type="hidden" asp-for="IdTipoLicitacao" />
+
+    </div>
+    <div class="col-md-4">
+        <label asp-for="US_ID" class="control-label">Usuários</label>
+        <select id="drpEmpList" class="form-control" asp-for="US_ID" asp-items="@(new SelectList(Model.Funcionarios, "UsId", "UsUsuario"))">
+            <option value="">--Select--</option>
+        </select>
+        <input type="hidden" asp-for="US_ID" />
+
     </div>
 </div>
 

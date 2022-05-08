@@ -12,10 +12,13 @@ namespace ClienteWebPortal.Controllers
     public class FuncionariosController : Controller
     {
         private readonly FuncionarioDBContext _context;
-
-        public FuncionariosController(FuncionarioDBContext context)
+        private readonly LICITANTEContext _licitante;
+        private readonly DataBase.Data.CERTIFICAContext _certifica;
+        public FuncionariosController(FuncionarioDBContext context, LICITANTEContext licitante = null, DataBase.Data.CERTIFICAContext certifica = null)
         {
             _context = context;
+            _licitante = licitante;
+            _certifica = certifica;
         }
 
         // GET: Funcionarios
@@ -45,7 +48,11 @@ namespace ClienteWebPortal.Controllers
         // GET: Funcionarios/Create
         public IActionResult Create()
         {
-            return View();
+            var model = new NovoFuncionario();
+
+            model.TipoLicitacao = _licitante.TipoLicitacaos.ToList();
+            model.Funcionarios = _certifica.Usuarios.ToList();
+            return View(model);
         }
 
         // POST: Funcionarios/Create
